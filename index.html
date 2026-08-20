@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA-BXMD | sir bravin bot</title>
+    <title>AURA-BXMD | WhatsApp Bot</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -19,7 +19,7 @@
             overflow: hidden;
         }
 
-        /* 1. GLITTER/PARTICLE CANVAS */
+        /* GLITTER/PARTICLE CANVAS */
         #particles {
             position: fixed;
             top: 0;
@@ -41,7 +41,7 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        /* 2. GLOWING TEXT ANIMATION */
+        /* GLOWING TEXT ANIMATION */
         h1 {
             font-size: 2.8rem;
             margin-bottom: 10px;
@@ -65,17 +65,23 @@
         .github-btn img { height: 40px; transition: transform 0.3s; }
         .github-btn img:hover { transform: scale(1.1); }
 
-        /* AUDIO PLAYER */
+        /* BEAT PLAYER BUTTON */
         .audio-control {
             margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #444;
-            border-radius: 10px;
-            background: #1a1a1a;
+            padding: 12px 25px;
+            border: 1px solid #8b5cf6;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+            color: white;
+            font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
+            display: inline-block;
         }
-        .audio-control:hover { background: #2a2a2a; box-shadow: 0 0 15px rgba(139, 92, 246, 0.5); }
+        .audio-control:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.7); 
+        }
     </style>
 </head>
 <body>
@@ -86,7 +92,7 @@
         <p>Multi-Device WhatsApp Bot by <b>sir-bravin111</b></p>
 
         <div class="links" align="center">
-            <strong>1. dev</+97455320902>
+            <strong>1. GITHUB REPO</strong>
             <br>
             <a href="https://github.com/sir-bravin111/AURA-BXMD" target="_blank" class="github-btn">
                 <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&labelColor=black&color=black" alt="GitHub Repo"/>
@@ -100,13 +106,13 @@
             </a>
         </div>
         
-        <!-- 3. AUDIO: ALAN WALKER - ALONE -->
-        <div class="audio-control" onclick="document.getElementById('bgmusic').play()">
-            🎵 Click to play: Alan Walker - Alone
+        <!-- WORKING BEAT PLAYER -->
+        <div class="audio-control" id="playBtn">
+            🎵 Play Cyber Beat
         </div>
         <audio id="bgmusic" loop>
-            <source src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_d1716cc9a6.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
+            <!-- Free for use beat. Sounds like EDM/Cyber -->
+            <source src="https://cdn.pixabay.com/download/audio/2024/09/01/audio_6c2f3e8c9e.mp3" type="audio/mpeg">
         </audio>
 
         <p style="font-size: 12px; margin-top: 20px;">Click "Deploy to Heroku" and connect your WhatsApp with pairing code</p>
@@ -120,20 +126,19 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let particles = [];
-for(let i = 0; i < 100; i++) {
+for(let i = 0; i < 120; i++) {
     particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         size: Math.random() * 2 + 1,
-        speedX: (Math.random() * 0.5 - 0.25),
-        speedY: (Math.random() * 0.5 - 0.25),
+        speedX: (Math.random() * 0.6 - 0.3),
+        speedY: (Math.random() * 0.6 - 0.3),
         opacity: Math.random()
     });
 }
 
 function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'white';
     particles.forEach(p => {
         p.x += p.speedX;
         p.y += p.speedY;
@@ -141,6 +146,7 @@ function animateParticles() {
         if(p.y < 0 || p.y > canvas.height) p.speedY *= -1;
         
         ctx.globalAlpha = p.opacity;
+        ctx.fillStyle = 'white';
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
@@ -148,6 +154,23 @@ function animateParticles() {
     requestAnimationFrame(animateParticles);
 }
 animateParticles();
+
+// AUDIO PLAY/PAUSE ON CLICK
+const playBtn = document.getElementById('playBtn');
+const audio = document.getElementById('bgmusic');
+let isPlaying = false;
+
+playBtn.addEventListener('click', () => {
+    if(isPlaying) {
+        audio.pause();
+        playBtn.innerHTML = "🎵 Play Cyber Beat";
+        isPlaying = false;
+    } else {
+        audio.play();
+        playBtn.innerHTML = "⏸️ Pause Beat";
+        isPlaying = true;
+    }
+});
 
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
