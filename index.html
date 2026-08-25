@@ -16,281 +16,160 @@
             min-height: 100vh;
             margin: 0;
             text-align: center;
-            overflow: hidden;
+            overflow-x: hidden;
             padding: 20px;
         }
-
-        /* ---------- AI POWER BACKGROUND (glowing network + particles) ---------- */
         #ai-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
             background: radial-gradient(circle at 30% 40%, #0d0b1a, #04040a);
-            background-image: 
-                /* glowing grid lines */
+            background-image:
                 linear-gradient(rgba(139, 92, 246, 0.08) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(139, 92, 246, 0.08) 1px, transparent 1px),
-                /* core AI glow */
                 radial-gradient(circle at 70% 80%, #3b82f622 0%, transparent 45%),
                 radial-gradient(circle at 20% 20%, #8b5cf633 0%, transparent 50%),
-                /* tech noise */
                 repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 2px, transparent 2px, transparent 8px);
             background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%, 100% 100%;
             pointer-events: none;
         }
-
-        /* floating AI "circuit" orbs */
         #ai-bg::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
+            content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%;
             background: radial-gradient(circle, #8b5cf622 0%, transparent 70%);
-            top: -10%;
-            left: -10%;
-            animation: orbFloat 20s linear infinite alternate;
-            filter: blur(40px);
+            top: -10%; left: -10%; animation: orbFloat 20s linear infinite alternate; filter: blur(40px);
         }
         #ai-bg::after {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
+            content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%;
             background: radial-gradient(circle, #3b82f633 0%, transparent 70%);
-            bottom: -10%;
-            right: -10%;
-            animation: orbFloat 25s linear infinite alternate-reverse;
-            filter: blur(50px);
+            bottom: -10%; right: -10%; animation: orbFloat 25s linear infinite alternate-reverse; filter: blur(50px);
         }
-
-        @keyframes orbFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(60px, 40px) scale(1.3); }
-        }
-
-        /* neural network particles (canvas) */
-        #particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.7;
-        }
-
-        /* container with glassmorphism + glow */
-        .container {
-            position: relative;
-            z-index: 10;
-            padding: 40px 35px;
-            max-width: 700px;
-            width: 100%;
-            border: 1px solid rgba(139, 92, 246, 0.25);
-            border-radius: 28px;
-            background: rgba(10, 10, 18, 0.70);
-            backdrop-filter: blur(18px);
+        @keyframes orbFloat { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(60px, 40px) scale(1.3); } }
+        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.7; }
+       .container {
+            position: relative; z-index: 10; padding: 40px 35px; max-width: 700px; width: 100%;
+            border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 28px;
+            background: rgba(10, 10, 18, 0.70); backdrop-filter: blur(18px);
             box-shadow: 0 0 70px rgba(139, 92, 246, 0.25), inset 0 0 60px rgba(59, 130, 246, 0.05);
             animation: float 3s ease-in-out infinite;
-            transition: all 0.2s;
         }
-
-        /* glowing text with AI vibe */
         h1 {
-            font-size: 2.9rem;
-            margin-bottom: 4px;
+            font-size: 2.9rem; margin-bottom: 4px;
             background: linear-gradient(90deg, #a78bfa, #60a5fa, #f472b6, #a78bfa);
-            background-size: 300% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-size: 300% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: gradientMove 6s ease infinite, floatText 2s ease-in-out infinite;
-            letter-spacing: -0.5px;
-            text-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
         }
-
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+        @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
         @keyframes floatText { 0%, 100% { text-shadow: 0 0 20px rgba(139, 92, 246, 0.5); } 50% { text-shadow: 0 0 50px rgba(59, 130, 246, 0.8); } }
-
-        .subhead {
-            color: #c4b5d4;
-            margin-bottom: 22px;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            font-weight: 300;
+       .subhead { color: #c4b5d4; margin-bottom: 22px; font-size: 1.1rem; letter-spacing: 1px; font-weight: 300; }
+       .subhead b { color: #a78bfa; font-weight: 600; }
+       .links a { display: inline-block; margin: 8px; text-decoration: none; }
+       .github-btn img { height: 40px; transition: transform 0.3s; filter: drop-shadow(0 0 6px #8b5cf655); }
+       .github-btn img:hover { transform: scale(1.12); filter: drop-shadow(0 0 16px #8b5cf6aa); }
+       .audio-control {
+            margin: 18px 0 12px; padding: 12px 32px; border: 1px solid #8b5cf6; border-radius: 60px;
+            background: linear-gradient(90deg, #8b5cf6cc, #3b82f6cc); color: white; font-weight: 600; cursor: pointer;
+            transition: 0.3s; display: inline-block; box-shadow: 0 0 30px rgba(139, 92, 246, 0.25);
         }
-        .subhead b { color: #a78bfa; font-weight: 600; }
+       .audio-control:hover { transform: scale(1.06); box-shadow: 0 0 50px rgba(139, 92, 246, 0.6); }
 
-        .links a { display: inline-block; margin: 8px; text-decoration: none; }
-        .github-btn img { height: 40px; transition: transform 0.3s; filter: drop-shadow(0 0 6px #8b5cf655); }
-        .github-btn img:hover { transform: scale(1.12); filter: drop-shadow(0 0 16px #8b5cf6aa); }
-
-        /* BEAT PLAYER BUTTON - cyber style */
-        .audio-control {
-            margin: 18px 0 12px;
-            padding: 12px 32px;
-            border: 1px solid #8b5cf6;
-            border-radius: 60px;
-            background: linear-gradient(90deg, #8b5cf6cc, #3b82f6cc);
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            display: inline-block;
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.25);
-            backdrop-filter: blur(4px);
-            letter-spacing: 0.5px;
+        /* --- NEW DOWNLOADER STYLE (added) --- */
+       .downloader-section {
+            margin: 28px 0 10px;
+            padding: 22px 18px;
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 20px;
+            background: rgba(18, 18, 30, 0.6);
+            backdrop-filter: blur(10px);
         }
-        .audio-control:hover { 
-            transform: scale(1.06); 
-            box-shadow: 0 0 50px rgba(139, 92, 246, 0.6); 
-            background: linear-gradient(90deg, #a78bfa, #60a5fa);
+       .downloader-section h3 { color: #a78bfa; margin-bottom: 12px; letter-spacing: 0.5px; }
+       .dl-input-wrap { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+       .dl-input {
+            flex: 1; min-width: 220px; padding: 13px 18px; border-radius: 60px;
+            border: 1px solid #3a3550; background: #0f0f18; color: #fff; outline: none;
+            font-size: 0.95rem;
         }
-
-        /* CONTACT SECTION – AI CONDUCT */
-        .contact-section {
-            margin-top: 30px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(139, 92, 246, 0.2);
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            align-items: center;
+       .dl-input:focus { border-color: #8b5cf6; box-shadow: 0 0 15px #8b5cf633; }
+       .dl-btn {
+            padding: 13px 26px; border-radius: 60px; border: 1px solid #8b5cf6;
+            background: linear-gradient(90deg, #8b5cf6, #3b82f6); color: #fff;
+            font-weight: 700; cursor: pointer; transition: 0.25s;
         }
-
-        .contact-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 16px;
+       .dl-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px #8b5cf6aa; }
+       .dl-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        #dlResult { margin-top: 18px; display: none; text-align: left; }
+        #dlResult.thumb { width: 100%; border-radius: 12px; margin-bottom: 10px; border: 1px solid #2f2a44; }
+        #dlResult.dl-title { font-size: 0.95rem; color: #e9e5ff; margin-bottom: 12px; }
+        #dlResult.dl-link {
+            display: block; text-align: center; padding: 12px; border-radius: 60px;
+            background: #22c55e; color: #000; font-weight: 800; text-decoration: none;
         }
+        #dlStatus { font-size: 0.85rem; color: #8b8b9a; margin-top: 10px; }
 
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #12121e;
-            padding: 12px 28px;
-            border-radius: 60px;
-            border: 1px solid #2f2a44;
-            color: #fff;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.25s;
-            font-size: 1rem;
-            letter-spacing: 0.4px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
+       .contact-section {
+            margin-top: 30px; padding-top: 24px; border-top: 1px solid rgba(139, 92, 246, 0.2);
+            display: flex; flex-direction: column; gap: 16px; align-items: center;
         }
-        .contact-btn i { font-size: 1.4rem; line-height: 1; }
-        .contact-btn.whatsapp { background: #075e54; border-color: #128C7E; }
-        .contact-btn.whatsapp:hover { background: #128C7E; transform: scale(1.05); box-shadow: 0 0 30px #075e54aa; }
-        .contact-btn.telegram { background: #1f2c3b; border-color: #2f7bb3; }
-        .contact-btn.telegram:hover { background: #2f7bb3; transform: scale(1.05); box-shadow: 0 0 30px #2f7bb3aa; }
-        .contact-btn.email { background: #1e1e2a; border-color: #5b5b77; }
-        .contact-btn.email:hover { background: #3a3a52; transform: scale(1.05); box-shadow: 0 0 30px #88888866; }
-
-        .conduct-badge {
-            background: rgba(10, 10, 20, 0.7);
-            border: 1px solid #8b5cf666;
-            border-radius: 60px;
-            padding: 8px 24px;
-            font-size: 0.9rem;
-            color: #d4c4e4;
-            display: inline-flex;
-            align-items: center;
-            gap: 14px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 0 20px #8b5cf622;
+       .contact-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px; }
+       .contact-btn {
+            display: inline-flex; align-items: center; gap: 10px; background: #12121e; padding: 12px 28px;
+            border-radius: 60px; border: 1px solid #2f2a44; color: #fff; font-weight: 600; text-decoration: none; transition: 0.25s;
         }
-        .conduct-badge span { color: #a78bfa; font-weight: 700; letter-spacing: 0.5px; }
-
-        .footnote {
-            font-size: 0.75rem;
-            color: #7a7a8a;
-            margin-top: 6px;
-            letter-spacing: 0.3px;
+       .contact-btn.whatsapp { background: #075e54; border-color: #128C7E; }
+       .contact-btn.telegram { background: #1f2c3b; border-color: #2f7bb3; }
+       .contact-btn.email { background: #1e1e2a; border-color: #5b5b77; }
+       .conduct-badge {
+            background: rgba(10, 10, 20, 0.7); border: 1px solid #8b5cf666; border-radius: 60px;
+            padding: 8px 24px; font-size: 0.9rem; color: #d4c4e4; display: inline-flex; align-items: center; gap: 14px;
         }
-
+       .conduct-badge span { color: #a78bfa; font-weight: 700; }
+       .footnote { font-size: 0.75rem; color: #7a7a8a; margin-top: 6px; }
         @media (max-width: 550px) {
-            .container { padding: 28px 16px; }
-            h1 { font-size: 2.2rem; }
-            .contact-row { flex-direction: column; gap: 12px; }
-            .contact-btn { width: 100%; justify-content: center; }
-            .conduct-badge { font-size: 0.8rem; padding: 6px 16px; }
+           .container { padding: 28px 16px; } h1 { font-size: 2.2rem; }
+           .contact-row { flex-direction: column; gap: 12px; }.contact-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
-
-    <!-- AI POWER BACKGROUND (layered glowing grid + orbs) -->
     <div id="ai-bg"></div>
-
-    <!-- GLITTER / NEURAL PARTICLES (canvas) -->
     <canvas id="particles"></canvas>
 
-    <!-- MAIN CARD -->
     <div class="container">
         <h1>⚡ AURA-BXMD</h1>
         <p class="subhead">AI‑Driven WhatsApp Bot · by <b>sir‑bravin111</b></p>
 
         <div class="links">
-            <strong style="color:#c4b5d4;">📁 GITHUB REPO</strong>
-            <br>
+            <strong style="color:#c4b5d4;">📁 GITHUB REPO</strong><br>
             <a href="https://github.com/sir-bravin111/AURA-BXMD" target="_blank" class="github-btn">
-                <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&labelColor=black&color=bl
-            <br><br>
-
-            <strong style="color:#c4b5d4;">🚀 𝔻𝔼ℙ𝕃𝕆𝕐 𝕋𝕆 ℍ𝔼ℝ𝕆𝕂𝕌</strong>
-            <br>ack" alt="GitHub Repo"/>
-            </a>
+                <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&labelColor=black&color=black" alt="GitHub Repo"/>
+            </a><br><br>
+            <strong style="color:#c4b5d4;">🚀 𝔻𝔼ℙ𝕃𝕆𝕐 𝕋𝕆 ℍ𝔼ℝ𝕆𝕂𝕌</strong><br>
             <a href="https://dashboard.heroku.com/new?template=https://github.com/sir-bravin111/AURA-BXMD#main" target="_blank">
                 <img alt="Deploy to heroku" src="https://img.shields.io/badge/Deploy-100000?style=for-the-badge&logo=heroku&logoColor=white&labelColor=430098&color=430098"/>
             </a>
         </div>
-        
-        <!-- BEAT PLAYER -->
-        <div class="audio-control" id="playBtn">
-            🎵 Play sir brsvin Beat
-        </div>
+
+        <div class="audio-control" id="playBtn">🎵 Play sir brsvin Beat</div>
         <audio id="bgmusic" loop>
             <source src="https://cdn.pixabay.com/download/audio/2024/09/01/audio_6c2f3e8c9e.mp3" type="audio/mpeg">
         </audio>
 
-        <!-- CONDUCT ME / CONTACT SECTION (AI powered) -->
+        <!-- YOUTUBE DOWNLOADER - INTEGRATED API -->
+        <div class="downloader-section">
+            <h3>📥 YouTube Video Downloader</h3>
+            <div class="dl-input-wrap">
+                <input id="ytUrl" class="dl-input" type="text" placeholder="Paste YouTube link here... e.g. https://youtu.be/...">
+                <button id="dlBtn" class="dl-btn">Download</button>
+            </div>
+            <div id="dlStatus"></div>
+            <div id="dlResult"></div>
+        </div>
+
         <div class="contact-section">
-            <div class="conduct-badge">
-                <span>🧠 CONDUCT ME</span>  ·  connect via
-            </div>
-
+            <div class="conduct-badge"><span>🧠 CONDUCT ME</span> · connect via</div>
             <div class="contact-row">
-                <!-- WhatsApp -->
-                <a href="https://wa.link/30d4eu" 
-                   target="_blank" class="contact-btn whatsapp">
-                    <i>📱</i> WhatsApp
-                </a>
-
-                <!-- Telegram -->
-                <a href="https://wa.link/30d4eu" target="_blank" class="contact-btn telegram">
-                    <i>✈️</i> Telegram
-                </a>
-
-                <!-- Email -->
-                <a href="kingsleybravo381@gmail.com" class="contact-btn email">
-                    <i>📧</i> Email
-                </a>
+                <a href="https://wa.link/30d4eu" target="_blank" class="contact-btn whatsapp"><i>📱</i> WhatsApp</a>
+                <a href="https://wa.link/30d4eu" target="_blank" class="contact-btn telegram"><i>✈️</i> Telegram</a>
+                <a href="mailto:kingsleybravo381@gmail.com" class="contact-btn email"><i>📧</i> Email</a>
             </div>
-
             <div style="display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; margin-top: 4px;">
                 <span style="color: #8b8b9a; font-size: 0.8rem;">🔹 SIR BRAVIN </span>
             </div>
@@ -299,101 +178,111 @@
     </div>
 
 <script>
-// ---------- NEURAL NETWORK PARTICLES (enhanced) ----------
+const API_BASE = "https://apiziaul.vercel.app/api/downloader/ytmp4";
+
+// Downloader Logic
+const ytUrlInput = document.getElementById('ytUrl');
+const dlBtn = document.getElementById('dlBtn');
+const dlStatus = document.getElementById('dlStatus');
+const dlResult = document.getElementById('dlResult');
+
+dlBtn.addEventListener('click', async () => {
+    const url = ytUrlInput.value.trim();
+    if(!url){ dlStatus.textContent = "⚠️ Please paste a YouTube URL first."; return; }
+    dlBtn.disabled = true;
+    dlBtn.textContent = "Processing...";
+    dlStatus.textContent = "⏳ Fetching video info from API...";
+    dlResult.style.display = "none";
+    dlResult.innerHTML = "";
+
+    try {
+        // API expects?url= - most apiziaul APIs use that format
+        const apiUrl = `${API_BASE}?url=${encodeURIComponent(url)}`;
+        const res = await fetch(apiUrl);
+        const data = await res.json();
+        console.log("API Response:", data);
+
+        // Try to handle multiple possible response structures
+        let video = data.result || data.data || data;
+        let downloadUrl = video.download_url || video.url || video.link || video.dl_url || data.download_url || data.url;
+        let title = video.title || video.judul || "YouTube Video";
+        let thumb = video.thumbnail || video.thumb || video.image || "";
+        let quality = video.quality || "mp4";
+
+        // Fallback if API returns array
+        if(Array.isArray(video) && video.length > 0){
+            downloadUrl = video[0].url || video[0].download_url;
+            title = video[0].quality || title;
+        }
+
+        if(!downloadUrl){
+            throw new Error("No download link found. Raw response: " + JSON.stringify(data).slice(0,200));
+        }
+
+        dlStatus.textContent = "✅ Ready to download!";
+        dlResult.style.display = "block";
+        dlResult.innerHTML = `
+            ${thumb? `<img src="${thumb}" class="thumb" alt="thumbnail">` : ""}
+            <div class="dl-title">🎬 ${title}</div>
+            <a href="${downloadUrl}" target="_blank" download class="dl-link">⬇️ Download Video Now (${quality})</a>
+            <div style="font-size:0.7rem;color:#666;margin-top:8px;word-break:break-all;">Direct link: ${downloadUrl}</div>
+        `;
+
+    } catch(err){
+        dlStatus.textContent = "❌ Failed: " + err.message;
+        console.error(err);
+    } finally {
+        dlBtn.disabled = false;
+        dlBtn.textContent = "Download";
+    }
+});
+
+// Particles & Audio (your original)
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-const PARTICLE_COUNT = 150;
-
+canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+let particles = []; const PARTICLE_COUNT = 150;
 for(let i = 0; i < PARTICLE_COUNT; i++) {
     particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
+        x: Math.random() * canvas.width, y: Math.random() * canvas.height,
         size: Math.random() * 2.8 + 0.8,
-        speedX: (Math.random() * 0.7 - 0.35),
-        speedY: (Math.random() * 0.7 - 0.35),
+        speedX: (Math.random() * 0.7 - 0.35), speedY: (Math.random() * 0.7 - 0.35),
         opacity: Math.random() * 0.7 + 0.3,
-        color: `hsl(${260 + Math.random() * 40}, 70%, 60%)` // purple/blue range
+        color: `hsl(${260 + Math.random() * 40}, 70%, 60%)`
     });
 }
-
-// connection lines
 function drawConnections() {
     for(let i = 0; i < particles.length; i++) {
         for(let j = i+1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
+            const dx = particles[i].x - particles[j].x; const dy = particles[i].y - particles[j].y;
             const distance = Math.sqrt(dx*dx + dy*dy);
             if(distance < 130) {
-                ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
-                const alpha = (1 - distance/130) * 0.25;
-                ctx.strokeStyle = `rgba(139, 92, 246, ${alpha})`;
-                ctx.lineWidth = 0.7;
-                ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.strokeStyle = `rgba(139, 92, 246, ${(1 - distance/130) * 0.25})`; ctx.lineWidth = 0.7; ctx.stroke();
             }
         }
     }
 }
-
 function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    // update and draw particles
     particles.forEach(p => {
-        p.x += p.speedX;
-        p.y += p.speedY;
+        p.x += p.speedX; p.y += p.speedY;
         if(p.x < 0 || p.x > canvas.width) p.speedX *= -1;
         if(p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-        
-        ctx.globalAlpha = p.opacity;
-        ctx.fillStyle = p.color;
-        ctx.shadowColor = '#8b5cf6';
-        ctx.shadowBlur = 12;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.globalAlpha = p.opacity; ctx.fillStyle = p.color; ctx.shadowColor = '#8b5cf6'; ctx.shadowBlur = 12;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
     });
-    
-    // draw neural connections
-    drawConnections();
-    
-    // reset shadow for performance
-    ctx.shadowBlur = 0;
-    requestAnimationFrame(animateParticles);
+    drawConnections(); ctx.shadowBlur = 0; requestAnimationFrame(animateParticles);
 }
 animateParticles();
-
-// ---------- AUDIO CONTROL ----------
-const playBtn = document.getElementById('playBtn');
-const audio = document.getElementById('bgmusic');
-let isPlaying = false;
-
+const playBtn = document.getElementById('playBtn'); const audio = document.getElementById('bgmusic'); let isPlaying = false;
 playBtn.addEventListener('click', () => {
-    if(isPlaying) {
-        audio.pause();
-        playBtn.innerHTML = "🎵 Play Cyber Beat";
-        isPlaying = false;
-    } else {
-        audio.play().catch(() => {});
-        playBtn.innerHTML = "⏸️ Pause Beat";
-        isPlaying = true;
-    }
+    if(isPlaying){ audio.pause(); playBtn.innerHTML = "🎵 Play Cyber Beat"; isPlaying = false; }
+    else { audio.play().catch(() => {}); playBtn.innerHTML = "⏸️ Pause Beat"; isPlaying = true; }
 });
-
-// resize canvas
 window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    // reposition particles to avoid clustering
-    particles.forEach(p => {
-        p.x = Math.random() * canvas.width;
-        p.y = Math.random() * canvas.height;
-    });
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    particles.forEach(p => { p.x = Math.random() * canvas.width; p.y = Math.random() * canvas.height; });
 });
 </script>
 </body>
