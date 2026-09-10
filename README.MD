@@ -11,7 +11,7 @@ A multi-device WhatsApp bot base built with [Baileys](https://github.com/Whiskey
 
 ## 🚀 Deploy
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/YOUR_USERNAME/tom-jerry-bot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sir-bravin111/H)
 
 ## 🛠️ Local Setup
 
