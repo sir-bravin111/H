@@ -1,0 +1,64 @@
+{
+  "name": "tom-jerry-bot",
+  "description": "Tom/Jerry — A multi-device WhatsApp bot base built with Baileys",
+  "repository": "https://github.com/sir-bravin111/H",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["node", "whatsapp", "bot", "baileys", "tom-jerry"],
+  "stack": "heroku-22",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "BOT_NAME": {
+      "description": "Name of your bot",
+      "value": "Tom/Jerry",
+      "required": false
+    },
+    "OWNER_NUMBER": {
+      "description": "Your WhatsApp number with country code (no + or spaces)",
+      "value": "1234567890",
+      "required": true
+    },
+    "PREFIX": {
+      "description": "Command prefix",
+      "value": ".",
+      "required": false
+    },
+    "SESSION_NAME": {
+      "description": "Session folder name (not persistent on Heroku)",
+      "value": "tom_jerry_session",
+      "required": false
+    },
+    "SESSION_ID": {
+      "description": "Base64 encoded session string (use for Heroku persistence)",
+      "value": "",
+      "required": false
+    },
+    "AUTO_READ": {
+      "description": "Automatically mark messages as read",
+      "value": "false",
+      "required": false
+    },
+    "AUTO_TYPING": {
+      "description": "Show typing indicator",
+      "value": "false",
+      "required": false
+    },
+    "LOG_LEVEL": {
+      "description": "Pino log level",
+      "value": "info",
+      "required": false
+    }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "eco"
+    }
+  },
+  "scripts": {
+    "postdeploy": "echo 'Tom/Jerry bot deployed! Check logs for QR code or use SESSION_ID for pairing.'"
+  }
+}
